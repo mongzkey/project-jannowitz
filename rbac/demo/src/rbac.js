@@ -241,7 +241,7 @@ async function transferAsset(tx, fromKeyPair, toPublicKey, metadata) {
 
     const txSigned = driver.Transaction.signTransaction(txTransfer, fromKeyPair.privateKey)
     let trTx
-    await conn.postTransaction(txSigned)
+    await conn.postTransactionCommit(txSigned)
         // .then(() => conn.pollStatusAndFetchTransaction(txSigned.id))
         .then(retrievedTx => {
             trTx = retrievedTx
